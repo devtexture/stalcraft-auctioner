@@ -45,6 +45,19 @@ class Item:
             name_en=data['name']['lines']['en']
         )
     
+    def get_data(self):
+        content = get_content(self.item_data);
+        item_data = {
+            "key": "",
+            "status_state": "",
+            "rank": "",
+            "class": "",
+            "weight": "",
+            "durability": "",
+
+        }
+        return content
+    
     def get_image(self):
         return get_content(self.item_icon);
 
@@ -75,3 +88,10 @@ class ItemDatabase:
                 results.append(item);
 
         return results;
+
+if __name__ == "__main__":
+    items = ItemDatabase()
+    items.load_items()
+
+    item = items.get_item('9mmq');
+    item.get_data()
