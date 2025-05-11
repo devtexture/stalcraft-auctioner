@@ -46,17 +46,14 @@ class Item:
         )
     
     def get_data(self):
-        content = get_content(self.item_data);
-        item_data = {
-            "key": "",
-            "status_state": "",
-            "rank": "",
-            "class": "",
-            "weight": "",
-            "durability": "",
+        content = get_content(self.item_data)
+        blocks = content['infoBlocks']
 
+        return {
+            "id": content['id'],
+            "category": content['category'],
+            "class": blocks[0]['elements'][0]['value']['lines']['ru'],
         }
-        return content
     
     def get_image(self):
         return get_content(self.item_icon);
@@ -94,4 +91,4 @@ if __name__ == "__main__":
     items.load_items()
 
     item = items.get_item('9mmq');
-    item.get_data()
+    print(item.get_data())
