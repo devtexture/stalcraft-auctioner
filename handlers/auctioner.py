@@ -28,9 +28,9 @@ def register_handler(client):
             client.send_message(msg.chat.id, f'Найдено {len(results)} совпадений.', reply_markup=keyboard)
         
         except IndexError:
-            client.reply_to(msg, 'а дешевле есть?')
+            client.reply_to(msg, '?')
         except Exception as e:
-            client.reply_to(msg, f'говна наверни олух: {str(e)}')
+            client.reply_to(msg, f'ошибка: {str(e)}')
 
     @client.callback_query_handler(func=lambda call: call.data.startswith('auction_'))
     def handle_search(call):
@@ -49,4 +49,4 @@ def register_handler(client):
                 print(f'{str(e)}')
 
         except Exception as e:
-            client.send_message(call.message.chat.id, f'говна наверни олух: {str(e)}') 
+            client.send_message(call.message.chat.id, f'ошибка: {str(e)}') 
