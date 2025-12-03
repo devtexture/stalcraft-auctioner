@@ -16,10 +16,10 @@ def load_handlers( client ):
             module = importlib.import_module(module_path);
             if hasattr(module, 'register_handler'):
                 module.register_handler(client);
-                print(f'сколько? пять гривен? а дешевле есть? {module_path}');
+                print(f'загружен модуль {module_path}');
         
         except Exception as e:
-            print(f'окак {module_path} -> {str(e)}')
+            print(f'ошибка загрузки модуля {module_path} -> {str(e)}')
 
 if __name__ == '__main__':
     load_handlers( client );
